@@ -55,20 +55,23 @@ function animatePress(currentColour) {
 
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-    console.log("success");
+    // console.log("success");
     if (userClickedPattern.length === gamePattern.length) {
       setTimeout(function () {
         nextSequence();
       }, 1000);
     }
   } else {
-    console.log("wrong");
-    $(document).addClass("game-over");
-    var audio = new Audio("sounds/wrong.mp3");
-    audio.play();
+    // console.log("wrong");
+    
+    playSound("wrong");
+
+     $("body").addClass("game-over");
+
     setTimeout(function () {
-      $(document).removeClass("game-over");
-      $("#level-title").text("Game Over");
+       $("body").removeClass("game-over");
+      
     }, 200);
+    $("#level-title").text("Game Over, Press any Key to Start");
   }
 }
